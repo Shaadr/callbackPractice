@@ -105,7 +105,13 @@ contains(names, 'Colt', function(result){
 
 
 function uniq(names, cb, arr) {
-  return cb(uniqArr);
+  var uniqArr = [];
+  for (var i = 0; i < names.length; i++) {
+    for (var j = 0; j < arr.; j++){
+
+    }
+  }
+  }
 }
 
     //Code Here for uniq
