@@ -1,16 +1,16 @@
 /* In this repo your job is to write functions to make each function call work properly.
-Below is a sample problem 
+Below is a sample problem
 
   //code here for sayHi
 
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay);
    });
-   
 
-and what you should write is the sayHi function that makes the code above work, 
-    
-    
+
+and what you should write is the sayHi function that makes the code above work,
+
+
    var sayHi = function(str, cb){
     cb(str);
    }
@@ -18,14 +18,16 @@ and what you should write is the sayHi function that makes the code above work,
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay); //should alert ('Hi Katie')'
    });
-    
-    
+
+
 */
 
 
 
-  //Code Here for first
-  
+  var first = function first(names, cb)  {
+    return cb(names[0]);
+  }
+
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -39,7 +41,9 @@ first(names, function(firstName){
 
 
 
-  //Code Here for last
+  var last = function last(arr, cb){
+  return cb(arr[arr.length - 1]);
+}
 
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -54,7 +58,9 @@ last(names, function(lastName){
 
 
 
-
+function multiply(num1, num2, cb) {
+  return cb(num1 * num2);
+}
 
   //Code Here for multiply
 
@@ -68,9 +74,18 @@ multiply(4, 3, function(answer){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
+// in the following:
+// the for loop can be taken out b/c .indexOf() is mini forloop.
+// in that case, a return cb(false); must be added after the if statement
 
-
-
+function contains(names, str, cb){
+  for(var i = 0; i < names.length; i++) {
+    if (names.indexOf(str) !== -1){
+      return cb(true);
+    }
+  }
+  cb(false);
+}
 
   //Code Here for contains
 
@@ -89,7 +104,9 @@ contains(names, 'Colt', function(result){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+function uniq(names, cb, arr) {
+  return cb(uniqArr);
+}
 
     //Code Here for uniq
 
@@ -146,5 +163,5 @@ var users = [
 ];
 
 getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address);
 });
