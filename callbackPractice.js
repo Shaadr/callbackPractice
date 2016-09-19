@@ -24,7 +24,7 @@ and what you should write is the sayHi function that makes the code above work,
 
 
 
-  var first = function first(names, cb)  {
+  function first(names, cb)  {
     return cb(names[0]);
   }
 
@@ -41,7 +41,7 @@ first(names, function(firstName){
 
 
 
-  var last = function last(arr, cb){
+function last(arr, cb){
   return cb(arr[arr.length - 1]);
 }
 
@@ -78,9 +78,9 @@ multiply(4, 3, function(answer){
 // the for loop can be taken out b/c .indexOf() is mini forloop.
 // in that case, a return cb(false); must be added after the if statement
 
-function contains(names, str, cb){
-  for(var i = 0; i < names.length; i++) {
-    if (names.indexOf(str) !== -1){
+function contains(arr, str, cb){
+  for(var i = 0; i < arr.length; i++) {
+    if (arr.indexOf(str) !== -1){
       return cb(true);
     }
   }
@@ -104,21 +104,28 @@ contains(names, 'Colt', function(result){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-function uniq(names, cb, arr) {
-  var uniqArr = [];
-  for (var i = 0; i < names.length; i++) {
-    for (var j = 0; j < arr.; j++){
-
-    }
-  }
-  }
-}
+// function uniq(names, cb) {
+//   var newArr = [];
+//   for (var i = 0; i < names.length; i++) {
+//     for (var j = 0; j < names.length; j++){
+//       if (names[i] === names[j]) {
+//       	//names.splice(i,1);
+//        	newArr.push(names.splice(i, 1));
+//         //console.log(names[i]);
+//        // console.log(names[j]);
+//         console.log(names);
+//         console.log(newArr);
+//         console.log("---")
+//       }
+//     }
+//   }
+//   return cb(newArr);
+// }
 
     //Code Here for uniq
 
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
-});
 
 
 
@@ -127,12 +134,17 @@ uniq(names, function(uniqArr){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+function each(arr, cb) {
+  for (var i = 0; i < arr.length; i++) {
+    var ret = cb(arr[i], i);
+  }
+  return ret;
+}
 
     //Code Here for each
 
-each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
+each(names, function(item, index){
+  console.log('The item in the ' + index + ' position is ' + item)
 });
 
 
