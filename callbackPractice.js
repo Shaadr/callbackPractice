@@ -24,14 +24,14 @@ and what you should write is the sayHi function that makes the code above work,
 
 
 
-  function first(names, cb)  {
-    return cb(names[0]);
-  }
+function first(names, cb) {
+  return cb(names[0]);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
-  console.log('The first name in names is ' + firstName)
+  console.log('The first name in names is ' + firstName);
 });
 
 
@@ -66,7 +66,7 @@ function multiply(num1, num2, cb) {
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
-})
+});
 
 
 
@@ -87,7 +87,6 @@ function contains(arr, str, cb){
   cb(false);
 }
 
-  //Code Here for contains
 
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -104,29 +103,22 @@ contains(names, 'Colt', function(result){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-// function uniq(names, cb) {
-//   var newArr = [];
-//   for (var i = 0; i < names.length; i++) {
-//     for (var j = 0; j < names.length; j++){
-//       if (names[i] === names[j]) {
-//       	//names.splice(i,1);
-//        	newArr.push(names.splice(i, 1));
-//         //console.log(names[i]);
-//        // console.log(names[j]);
-//         console.log(names);
-//         console.log(newArr);
-//         console.log("---")
-//       }
-//     }
-//   }
-//   return cb(newArr);
-// }
+var uniq = function(arr, cb) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(i, 1);
+        i--;
+      }
+    }
+  }
+  cb(arr);
+}
 
-    //Code Here for uniq
 
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
-
+});
 
 
 
@@ -141,10 +133,9 @@ function each(arr, cb) {
   return ret;
 }
 
-    //Code Here for each
 
 each(names, function(item, index){
-  console.log('The item in the ' + index + ' position is ' + item)
+  console.log('The item in the ' + index + ' position is ' + item);
 });
 
 
@@ -154,10 +145,14 @@ each(names, function(item, index){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
+function getUserById(arr, value, cb) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].id === value) {
+      return cb(arr[i]);
+    }
+  }
+}
 
-
-
- //code here for getUserById
 
 var users = [
   {
@@ -177,9 +172,10 @@ var users = [
     email: 'ryan@gmail.com',
     name: 'Ryan',
     address: '192 East 32 North'
-  },
+  }
 ];
 
-getUserById(users, '16t', function(user){
+
+getUserById(users, '16t', function(user) {
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address);
 });
